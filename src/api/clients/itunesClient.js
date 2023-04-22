@@ -10,6 +10,16 @@ export const fetchPodcasts = async () => {
   }
 };
 
+export const fetchPodcast = async (id) => {
+  try {
+    const res = await axios.get(`${RequestUrlList.GET_PODCAST_DETAILS}${id}`);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const itunesClient = {
   fetchPodcasts,
+  fetchPodcast,
 };

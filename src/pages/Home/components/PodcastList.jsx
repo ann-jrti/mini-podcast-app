@@ -8,7 +8,7 @@ export const PodcastList = ({ podcastList, onPodcastChange }) => {
       <SearchBar onPodcastChange={onPodcastChange} podcasts={podcastList} />
       <div className="podcast-list-container">
         {podcastList.map((podcast) => (
-          <PodcastCard podcast={podcast} key={podcast.id.label} />
+          <PodcastCard podcast={podcast} key={podcast.id.attributes['im:id']} />
         ))}
       </div>
     </div>

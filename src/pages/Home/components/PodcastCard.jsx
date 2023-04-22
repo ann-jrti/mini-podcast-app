@@ -1,8 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import './PodcastCard.scss';
 
 export const PodcastCard = ({ podcast }) => {
+  const navigate = useNavigate();
   return (
-    <article className="podcast-card-container">
+    <article
+      className="podcast-card-container"
+      onClick={() => navigate(`podcast/${podcast.id.attributes['im:id']}`)}
+    >
       <div className="podcast-card-image-container">
         <img
           className="podcast-card-image"

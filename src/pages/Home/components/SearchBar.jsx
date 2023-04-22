@@ -15,7 +15,7 @@ export const SearchBar = ({ podcasts, onPodcastChange }) => {
       getPodcasts().then((podcasts) => onPodcastChange(podcasts));
       setFilteredPodcasts([]);
     }
-  }, [filteredPodcasts, onPodcastChange, search]);
+  }, [onPodcastChange, search]);
 
   const onFilter = (e) => {
     setSearch(e.target.value);

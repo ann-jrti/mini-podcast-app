@@ -14,3 +14,18 @@ export const getPodcasts = async () => {
   }
   return await refreshCache(itunesClient.fetchPodcasts, 'podcasts-data');
 };
+
+export const getPodcast = async (id) => {
+  const localStoragePodcastKey = `podcast-${id}-data`;
+  const cachedPodcast = localStorageClient.getStoredData(
+    localStoragePodcastKey
+  );
+
+  if (cachedPodcast !== null) {
+    return cachedPodcast;
+  }
+  return await refreshCache(
+    () => itunesClient.fetchPodcast(id),
+    localStoragePodcastKey
+  );
+};
