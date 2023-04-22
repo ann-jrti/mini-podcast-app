@@ -1,38 +1,38 @@
-const getExpirationKey = (localStorageKey) =>
-  `${localStorageKey}-expiration-date`;
-
-const isDataExpired = (localStorageKey) => {
-  const expirationKey = getExpirationKey(localStorageKey);
-  const expirationDate = localStorage.getItem(expirationKey);
-
-  if (expirationDate && new Date().getTime() < expirationDate) return false;
-  return true;
+const initStorageClient = () => {
+  clearExpiredKeys();
 };
 
-export const setStoreExpiration = (localStorageKey) => {
-  const expirationKey = getExpirationKey(localStorageKey);
-  localStorage.setItem(
-    expirationKey,
-    new Date().getTime() + 24 * 60 * 60 * 1000
-  );
+const clearExpiredKeys = () => {
+  const now = new Date().getTime();
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (JSON.parse(localStorage.getItem(key)).expiry < now) {
+      localStorage.removeItem(key);
+    }
+  }
 };
 
-export const setStoreData = (localStorageKey, data) => {
-  localStorage.setItem(localStorageKey, JSON.stringify(data));
-  setStoreExpiration(localStorageKey);
+const setStoreData = (localStorageKey, data) => {
+  const item = {
+    value: data,
+    expiry: new Date().getTime() + 24 * 60 * 60 * 1000,
+  };
+
+  localStorage.setItem(localStorageKey, JSON.stringify(item));
 };
 
-export const getStoredData = (localStorageKey) => {
-  if (isDataExpired(localStorageKey)) {
-    localStorage.removeItem(localStorageKey);
+const getStoredData = (localStorageKey) => {
+  const storedData = JSON.parse(localStorage.getItem(localStorageKey));
+  if (!storedData || storedData.expiry < new Date().getTime()) {
     return null;
   }
-  return JSON.parse(localStorage.getItem(localStorageKey));
+  return storedData.value;
 };
 
+initStorageClient();
+
 export const localStorageClient = {
-  isDataExpired,
   setStoreData,
   getStoredData,
-  setStoreExpiration,
 };
