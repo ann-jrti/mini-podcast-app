@@ -1,0 +1,39 @@
+.podcast-card-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 190px;
+    margin-top: 35px;
+    padding: 15px;
+    border-radius: 9px;
+    background: #f2f2f2;
+    box-shadow: 9px 9px 18px #dadada, -9px -9px 18px #ffffff;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.podcast-card-image-container {
+    margin-top: -45px;
+    position: absolute;
+}
+
+.podcast-card-image {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.podcast-card-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.podcast-card-author {
+    font-size: 12px;
+}

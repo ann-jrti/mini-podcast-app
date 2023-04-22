@@ -1,0 +1,35 @@
+.searchbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.searchbar-podcasts-counter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #691560;
+    border-radius: 5px;
+    width: 45px;
+    height: 30px;
+}
+
+.searchbar-podcasts-counter {
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+}
+
+.searchbar-input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 70px;
+
+    &:focus {
+        outline: none;
+        border-color: #691560;
+    }
+}

@@ -1,11 +1,16 @@
 import { PodcastCard } from './PodcastCard';
+import { SearchBar } from './SearchBar';
+import './PodcastList.scss';
 
-export const PodcastList = ({ podcastList }) => {
+export const PodcastList = ({ podcastList, onPodcastChange }) => {
   return (
     <div>
-      {podcastList.map((podcast) => (
-        <PodcastCard podcast={podcast} key={podcast.id.label} />
-      ))}
+      <SearchBar onPodcastChange={onPodcastChange} podcasts={podcastList} />
+      <div className="podcast-list-container">
+        {podcastList.map((podcast) => (
+          <PodcastCard podcast={podcast} key={podcast.id.label} />
+        ))}
+      </div>
     </div>
   );
 };
