@@ -1,0 +1,40 @@
+.details-podcast-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 250px;
+    border-radius: 6px;
+    background: #f2f2f2;
+    box-shadow: 9px 9px 18px #dadada, -9px -9px 18px #ffffff;
+    padding: 20px;
+}
+
+.details-podcsat-card-title {
+    font-weight: 700;
+}
+
+.details-podcsat-card-artist {
+    font-style: italic;
+    font-size: 13px;
+}
+
+.details-podcast-card-img-container {
+    display: flex;
+    justify-content: center;
+
+    img {
+        border-radius: 10px;
+        width: 160px;
+    }
+}
+
+.details-podcast-card-description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.details-podcast-card-description {
+    font-size: 13px;
+    font-style: italic;
+}

@@ -1,0 +1,14 @@
+td {
+    text-align: left;
+    padding: 8px;
+    border: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.podcast-episode-title {
+    &:hover {
+        cursor: pointer;
+    }
+}

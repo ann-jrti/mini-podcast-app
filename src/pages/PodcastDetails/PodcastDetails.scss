@@ -1,0 +1,24 @@
+.podcast-details-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    gap: 60px;
+}
+
+.podcast-details-episodes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    p {
+        font-weight: 700;
+    }
+}
+.podcast-details-episodes-container > div {
+    background: #f2f2f2;
+    box-shadow: 9px 9px 18px #dadada, -9px -9px 18px #ffffff;
+    padding: 20px;
+}
+.podcast-details-episodes-container {
+    width: 60vw;
+}

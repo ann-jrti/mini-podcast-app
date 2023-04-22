@@ -12,8 +12,14 @@ export const fetchPodcasts = async () => {
 
 export const fetchPodcast = async (id) => {
   try {
-    const res = await axios.get(`${RequestUrlList.GET_PODCAST_DETAILS}${id}`);
-    return res.data;
+    const res = await axios.get(
+      `${RequestUrlList.GET_PODCAST_DETAILS}${id}&entity=podcastEpisode`
+    );
+
+    return {
+      podcastInfo: res.data.results.shift(),
+      episodesList: res.data.results,
+    };
   } catch (error) {
     console.error(error);
   }
