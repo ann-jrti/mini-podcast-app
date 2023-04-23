@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import DOMPurify from 'dompurify';
 import './PodcastDetailsCard.scss';
 
 export const PodcastDetailsCard = ({ podcast }) => {
@@ -36,10 +36,12 @@ export const PodcastDetailsCard = ({ podcast }) => {
 
       <div className="details-podcast-card-description-container">
         <h4>Description:</h4>
-        <p className="details-podcast-card-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(podcast.podcastDescription),
+          }}
+          className="details-podcast-card-description"
+        ></p>
       </div>
     </article>
   );
