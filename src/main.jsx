@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { EpisodeDetails, ErrorPage, Home, PodcastDetails } from './pages';
 import './index.css';
+import { AppTitle } from './pages/components/AppTitle';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AppTitle />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

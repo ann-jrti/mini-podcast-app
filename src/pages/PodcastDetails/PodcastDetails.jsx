@@ -5,6 +5,7 @@ import { PodcastDetailsCard } from '../components/PodcastDetailsCard';
 import { EpisodesTable } from './components';
 
 import './PodcastDetails.scss';
+import { Spinner } from '../components/Spinner';
 
 export const PodcastDetails = () => {
   const { podcastId } = useParams();
@@ -16,7 +17,7 @@ export const PodcastDetails = () => {
 
   return (
     <div className="podcast-details-container">
-      {podcastInfo && (
+      {podcastInfo ? (
         <>
           <div>
             <PodcastDetailsCard podcast={podcastInfo} />
@@ -30,6 +31,8 @@ export const PodcastDetails = () => {
             </div>
           </div>
         </>
+      ) : (
+        <Spinner loadingText="Loading podcast..." />
       )}
     </div>
   );

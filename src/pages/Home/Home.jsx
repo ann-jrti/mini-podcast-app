@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getPodcasts } from '../../api/services/podcastService';
 import { PodcastList } from './components/PodcastList';
-import './Home.scss';
+import { Spinner } from '../components/Spinner';
 
 export const Home = () => {
   const [podcastsList, setPodcastsList] = useState(null);
@@ -11,13 +11,13 @@ export const Home = () => {
 
   return (
     <div>
-      <h2 className="home-title">Podcaster</h2>
-
-      {podcastsList && (
+      {podcastsList ? (
         <PodcastList
           onPodcastChange={setPodcastsList}
           podcastList={podcastsList}
         />
+      ) : (
+        <Spinner loadingText="Loading podcasts.." />
       )}
     </div>
   );
