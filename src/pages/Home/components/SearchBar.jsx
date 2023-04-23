@@ -16,7 +16,7 @@ export const SearchBar = ({ onTextSearchChange, searchResultCount }) => {
         className="searchbar-input"
         onChange={onFilter}
         type="text"
-        placeholder="Search for a podcast name"
+        placeholder="Filter podcasts"
       ></input>
     </div>
   );
