@@ -1,9 +1,16 @@
 import axios from 'axios';
-import { RequestUrlList } from '../RequestUrlList';
+import { ITUNES_URIS } from '../itunesURIS';
+import { buildUrlForCORS } from '../utils/urlBuilder';
+
+const ITUNES_HOST = 'https://itunes.apple.com';
 
 const fetchPodcasts = async () => {
   try {
-    const res = await axios.get(RequestUrlList.GET_PODCAST_LIST);
+    const url = buildUrlForCORS(
+      `${ITUNES_HOST}${ITUNES_URIS.GET_PODCAST_LIST}`
+    );
+    const res = await axios.get(url);
+
     return res.data.feed.entry;
   } catch (error) {
     console.error(error);
@@ -12,9 +19,10 @@ const fetchPodcasts = async () => {
 
 const fetchPodcast = async (podcastId) => {
   try {
-    const res = await axios.get(
-      `${RequestUrlList.GET_PODCAST_DETAILS}${podcastId}&entity=podcastEpisode`
+    const url = buildUrlForCORS(
+      `${ITUNES_HOST}${ITUNES_URIS.GET_PODCAST_DETAILS}?id=${podcastId}&entity=podcastEpisode`
     );
+    const res = await axios.get(url);
 
     return {
       podcastInfo: res.data.results.shift(),
