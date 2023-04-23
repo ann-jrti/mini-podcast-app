@@ -1,4 +1,4 @@
-import './Episodedescription.scss';
+import './EpisodeDescription.scss';
 
 export const EpisodeDescription = ({ episode }) => {
   return (
