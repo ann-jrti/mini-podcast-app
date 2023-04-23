@@ -1,5 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import './AppTitle.scss';
 
 export const AppTitle = () => {
-  return <h2 className="app-title">Podcaster</h2>;
+  const navigate = useNavigate();
+  return (
+    <h2 onClick={() => navigate('/')} className="app-title">
+      Podcaster
+    </h2>
+  );
 };

@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #691560;
+    background-color: #51acea;
     border-radius: 5px;
     width: 45px;
     height: 30px;
@@ -31,6 +31,6 @@
 
     &:focus {
         outline: none;
-        border-color: #691560;
+        border-color: #51acea;
     }
 }
