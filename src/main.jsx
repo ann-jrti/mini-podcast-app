@@ -15,14 +15,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        errorElement: <ErrorPage />,
       },
       {
         path: '/podcast/:podcastId',
         element: <PodcastDetails />,
+        errorElement: <ErrorPage />,
       },
       {
         path: '/podcast/:podcastId/episode/:episodeId',
         element: <EpisodeDetails />,
+        errorElement: <ErrorPage />,
       },
     ],
   },
