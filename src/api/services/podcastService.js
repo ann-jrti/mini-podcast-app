@@ -15,8 +15,8 @@ export const getPodcasts = async () => {
   return await refreshCache(itunesClient.fetchPodcasts, 'podcasts-data');
 };
 
-export const getPodcast = async (id) => {
-  const localStoragePodcastKey = `podcast-${id}-data`;
+export const getPodcast = async (podcastId) => {
+  const localStoragePodcastKey = `podcast-${podcastId}-data`;
   const cachedPodcast = localStorageClient.getStoredData(
     localStoragePodcastKey
   );
@@ -25,7 +25,24 @@ export const getPodcast = async (id) => {
     return cachedPodcast;
   }
   return await refreshCache(
-    () => itunesClient.fetchPodcast(id),
+    () => itunesClient.fetchPodcast(podcastId),
     localStoragePodcastKey
   );
+};
+
+export const getEpisode = async (podcastId, episodeId) => {
+  const localStoragePodcastKey = `podcast-${podcastId}-data`;
+  const cachedPodcast = localStorageClient.getStoredData(
+    localStoragePodcastKey
+  );
+
+  if (cachedPodcast !== null) {
+    return cachedPodcast.value.episodesList.find(
+      (episode) => episode.trackId === podcastId
+    );
+  }
+  return await refreshCache(
+    () => itunesClient.fetchPodcast(podcastId),
+    localStoragePodcastKey
+  ).episodesList.find((episode) => episode.trackId === episodeId);
 };

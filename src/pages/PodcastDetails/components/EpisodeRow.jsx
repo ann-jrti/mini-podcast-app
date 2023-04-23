@@ -1,7 +1,11 @@
 import { formatTime } from '../../../utils/formatTime';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './EpisodeRow.scss';
 
 export const EpisodeRow = ({ episode }) => {
+  const navigate = useNavigate();
+  const location = useLocation().pathname;
+
   const formattedEpisodeDuration = formatTime.getFormatedDuration(
     episode.trackTimeMillis
   );
@@ -9,7 +13,16 @@ export const EpisodeRow = ({ episode }) => {
 
   return (
     <tr key={episode.trackId}>
-      <td className="podcast-episode-title">{episode.trackName}</td>
+      <td
+        onClick={() =>
+          navigate(`${location}/episode/${episode.trackId}`, {
+            episode: episode,
+          })
+        }
+        className="podcast-episode-title"
+      >
+        {episode.trackName}
+      </td>
       <td>{formattedDate}</td>
       <td>{formattedEpisodeDuration}</td>
     </tr>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { RequestUrlList } from '../RequestUrlList';
 
-export const fetchPodcasts = async () => {
+const fetchPodcasts = async () => {
   try {
     const res = await axios.get(RequestUrlList.GET_PODCAST_LIST);
     return res.data.feed.entry;
@@ -10,10 +10,10 @@ export const fetchPodcasts = async () => {
   }
 };
 
-export const fetchPodcast = async (id) => {
+const fetchPodcast = async (podcastId) => {
   try {
     const res = await axios.get(
-      `${RequestUrlList.GET_PODCAST_DETAILS}${id}&entity=podcastEpisode`
+      `${RequestUrlList.GET_PODCAST_DETAILS}${podcastId}&entity=podcastEpisode`
     );
 
     return {
