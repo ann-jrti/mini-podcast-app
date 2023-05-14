@@ -11,17 +11,20 @@ import './EpisodeDetails.scss';
 export const EpisodeDetails = () => {
   const [podcastInfo, setPodcastInfo] = useState(null);
   const [episodeInfo, setEpisodeInfo] = useState(null);
-
+  const [episodeDescription, setEpisodeDescription] = useState(null);
   const { podcastId, episodeId } = useParams();
 
   useEffect(() => {
     getPodcast(podcastId).then((podcast) => {
       setPodcastInfo(podcast);
-      setEpisodeInfo(
-        podcast.episodesList.find(
-          (episode) => episode.trackId === parseInt(episodeId)
-        )
+      const episodeInfo = podcast.episodesList.find(
+        (episode) => episode.trackId === parseInt(episodeId)
       );
+      const episodeDescription = podcast.last50Episodes.find(
+        (episode) => episode.guid === episodeInfo.episodeGuid
+      );
+      episodeDescription && setEpisodeDescription(episodeDescription);
+      setEpisodeInfo(episodeInfo);
     });
   }, [episodeId, podcastId]);
 
@@ -33,7 +36,10 @@ export const EpisodeDetails = () => {
             <PodcastDetailsCard podcast={podcastInfo} />{' '}
           </div>
           <div className="episode-details-description-audio">
-            <EpisodeDescription episode={episodeInfo} />
+            <EpisodeDescription
+              episode={episodeInfo}
+              description={episodeDescription}
+            />
             <EpisodeAudioPlayer episode={episodeInfo} />
           </div>
         </>
