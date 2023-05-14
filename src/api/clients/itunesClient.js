@@ -32,6 +32,7 @@ const fetchPodcast = async (podcastId) => {
       podcastInfo: res.data.results.shift(),
       episodesList: res.data.results,
       podcastDescription: feed.description,
+      last50Episodes: feed.items.slice(0, 50),
     };
   } catch (error) {
     console.error(error);
