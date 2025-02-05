@@ -1,3 +1,3 @@
 export const buildUrlForCORS = (url) => {
-  return `https://corsproxy.io/?${window.encodeURIComponent(url)}`;
+  return `https://corsproxy.io/?url=${window.encodeURIComponent(url)}`;
 };
